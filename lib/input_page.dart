@@ -21,6 +21,8 @@ class _InputPageState extends State<InputPage> {
   Color femaleCardColor= kInactiveCardCOlor;
 Gender? genderSelectd;
 int height =175;
+int weight = 75;
+int age=20;
   // void genderSelected(Gender selectedGender){
   //   setState(() {
   //     if(selectedGender==Gender.male){
@@ -124,8 +126,88 @@ int height =175;
           Expanded(
             child: Row(
               children: [
-                ResusableWidgit(color: kActiveCardColor),
-                ResusableWidgit(color: kActiveCardColor),
+                ResusableWidgit(
+                    color: kActiveCardColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Weight',style: kLabelstyle),
+                      Text(
+                          weight.toString(),
+                          style: kNumbersstyle,
+                      ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                   RoundedIconButton(
+                     onPressed: (){
+                       setState(() {
+                         weight++;
+                       });
+                     },
+                       iconData: Icons.add,
+                   ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      RoundedIconButton(
+                        onPressed: (){
+                          setState(() {
+                            weight--;
+                          });
+                        },
+                        iconData: Icons.remove,
+
+                      ),
+                    ],
+                  ),
+
+                    ],
+
+                    ),
+                  ),
+
+                ResusableWidgit(
+                    color: kActiveCardColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Age',style: kLabelstyle),
+                      Text(
+                        age.toString(),
+                        style: kNumbersstyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundedIconButton(
+                            onPressed: (){
+                              setState(() {
+                                age++;
+                              });
+                            },
+                            iconData: Icons.add,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          RoundedIconButton(
+                            onPressed: (){
+                              setState(() {
+                                age--;
+                              });
+                            },
+                            iconData: Icons.remove,
+
+                          ),
+                        ],
+                      ),
+
+                    ],
+
+                  ),
+                ),
+
               ],
             ),
           ),
@@ -140,6 +222,25 @@ int height =175;
   }
 }
 
+class RoundedIconButton extends StatelessWidget {
+final IconData iconData;
+final void Function() onPressed;
+RoundedIconButton({ required this.iconData ,required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(onPressed: onPressed,
+    fillColor: const Color(0xFF1C1C32),
+      shape: CircleBorder(),
+      constraints: const BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      child: Icon(iconData ,
+      size: 30),
+    );
+  }
+}
 
 
 
