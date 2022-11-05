@@ -212,9 +212,20 @@ int age=20;
             ),
           ),
           Container(
+
             height: 80,
+            width: double.infinity,
             color: Color(0xFFEB1555),
             margin: EdgeInsets.only(top: 10),
+            child: Center(
+              child: Text(
+                  'CALCULATE YOUR BMI',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
           ),
         ],
       ),
